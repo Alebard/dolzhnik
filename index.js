@@ -127,7 +127,7 @@ const totalInterest2 = calcLoanInterest(
 );
 
 sum = sum + (totalInterest2 - totalInterest1)
-
+days = days + (Math.floor(((new Date() - conditions.at(-1).end) / (1000 * 60 * 60 * 24))));
 const daysNode = document.getElementById('days');
 daysNode.innerHTML = days;
 
