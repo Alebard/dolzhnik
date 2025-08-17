@@ -14,15 +14,7 @@ const conditions = [
     {
         correct: () => {sum = sum - 80000},
         rate: 18,
-        end: new Date("2025-07-26"),
-    },
-    {
-        rate: 17.6,
         end: new Date("2025-07-28"),
-    },
-    {
-        rate: 22,
-        end: new Date("2025-08-01"),
     },
 ];
 
@@ -106,15 +98,17 @@ function isSameDay(date1, date2) {
 }
 
 
+const lastBankDay = conditions.at(-1).end;
+
 // Пример использования
 const totalInterest1 = calcLoanInterest(
     1700000,
     21,
     60,
     [
-        { date: '2025-08-01', amount: 77000 }
+        { date: lastBankDay, amount: 77000 }
     ],
-    '2025-08-01'
+    lastBankDay
 );
 const totalInterest2 = calcLoanInterest(
     1700000,
@@ -123,14 +117,14 @@ const totalInterest2 = calcLoanInterest(
     [
         { date: new Date(), amount: 77000 }
     ],
-    '2025-08-01'
+    lastBankDay
 );
 
-sum = sum + (totalInterest2 - totalInterest1)
-days = days + (Math.floor(((new Date() - conditions.at(-1).end) / (1000 * 60 * 60 * 24))));
+days = days + (Math.floor((new Date() - lastBankDay )/ (1000 * 60 * 60 * 24)));
 const daysNode = document.getElementById('days');
 daysNode.innerHTML = days;
 
+sum = sum + (totalInterest2 - totalInterest1);
 const sumNode = document.getElementById('sum');
 sumNode.innerHTML = sum.toLocaleString('ru-RU', { maximumFractionDigits: 0 });
 
