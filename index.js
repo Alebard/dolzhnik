@@ -14,6 +14,10 @@ const conditions = [
     {
         correct: () => {sum = sum - 80000},
         rate: 18,
+        end: new Date("2025-07-26"),
+    },
+    {
+        rate: 18,
         end: new Date("2025-07-28"),
     },
 ];
