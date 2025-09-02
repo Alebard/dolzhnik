@@ -110,7 +110,7 @@ const totalInterest1 = calcLoanInterest(
     21,
     60,
     [
-        { date: lastBankDay, amount: 77000 }
+        { date: lastBankDay, amount: sum }
     ],
     lastBankDay
 );
@@ -119,7 +119,7 @@ const totalInterest2 = calcLoanInterest(
     21,
     60,
     [
-        { date: new Date(), amount: 77000 }
+        { date: new Date(), amount: sum }
     ],
     lastBankDay
 );
