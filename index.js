@@ -114,12 +114,21 @@ const totalInterest1 = calcLoanInterest(
     ],
     lastBankDay
 );
+
+const dogons = [
+    { date: '2025-09-22', amount: 24000 },
+]
+const dogonsSum = dogons.reduce((acc, cur) => {
+    return cur.amount + acc;
+}, 0)
+
 const totalInterest2 = calcLoanInterest(
     1700000,
     21,
     60,
     [
-        { date: new Date(), amount: sum }
+        ...dogons,
+        { date: new Date(), amount: sum - dogonsSum }
     ],
     lastBankDay
 );
@@ -128,7 +137,7 @@ days = days + (Math.floor((new Date() - lastBankDay )/ (1000 * 60 * 60 * 24)));
 const daysNode = document.getElementById('days');
 daysNode.innerHTML = days;
 
-sum = sum + (totalInterest2 - totalInterest1);
+sum = sum + (totalInterest2 - totalInterest1) - dogonsSum;
 const sumNode = document.getElementById('sum');
 sumNode.innerHTML = sum.toLocaleString('ru-RU', { maximumFractionDigits: 0 });
 
